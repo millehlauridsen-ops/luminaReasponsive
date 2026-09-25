@@ -132,7 +132,31 @@ function selectProduct(product) {
 
 function changeSite() {
   document.addEventListener("click", (event) => {
-    if (event.target.closest(".button")) window.location.href = "product.html";
+    const button = event.target.closest(".button");
+    if (!button) return;
+
+    if (window.location.pathname.endsWith("product.html")) {
+      let message = document.querySelector("#cart-message");
+
+      if (!message) {
+        message = document.createElement("div");
+        message.id = "cart-message";
+        message.setAttribute("role", "status");
+        document.body.appendChild(message);
+      }
+
+      message.textContent = "Tilføjet til kurv";
+      message.classList.add("visible");
+
+      clearTimeout(message.hideTimer);
+      message.hideTimer = setTimeout(() => {
+        message.classList.remove("visible");
+      }, 3000);
+
+      return;
+    }
+
+    window.location.href = "product.html";
   });
 }
 
@@ -155,15 +179,15 @@ function toggleSwitch() {
 
     document.documentElement.style.setProperty(
       "--colors__bg",
-      checked ? "#62493C" : "#ffffff"
+      checked ? "#62493C" : "#ffffff",
     );
     document.documentElement.style.setProperty(
       "--colors__mrkebrun",
-      checked ? "#fafafa" : "#282119"
+      checked ? "#fafafa" : "#282119",
     );
     document.documentElement.style.setProperty(
       "--colors__moonlightwhite",
-      checked ? "#282119" : "#fafafa"
+      checked ? "#282119" : "#fafafa",
     );
   };
   apply(toggle.checked);

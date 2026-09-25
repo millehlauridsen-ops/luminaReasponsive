@@ -1031,3 +1031,37 @@ footer a {
     padding: clamp(16px, 7vh, 70px) 20px 66px;
   }
 }
+
+#cart-message {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: #282119;
+  color: #fafafa;
+  font-family: Jura, sans-serif;
+  font-size: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+#cart-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  #cart-message {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    text-align: center;
+  }
+}
