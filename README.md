@@ -1,0 +1,1 @@
+Eksamensprojekt - final product. This site is in a seperate folder so it could be published as a site. The general github pushes and updates can be found in the folder also contributed to the exam project called: "Eksamensprojekt-LP"
